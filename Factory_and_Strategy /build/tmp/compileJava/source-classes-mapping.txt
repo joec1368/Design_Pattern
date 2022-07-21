@@ -1,28 +1,36 @@
-dp/PoliteTree.java
- dp.PoliteTree
-dp/Tree.java
- dp.Tree
-dp/Interactable.java
- dp.Interactable
-dp/Display.java
- dp.Display
-dp/Stone.java
- dp.Stone
-dp/PoliteStone.java
- dp.PoliteStone
+nonused/Accessory.java
+ nonused.Accessory
+dp/Position.java
+ dp.Position
 dp/RudeTree.java
  dp.RudeTree
 dp/RudeStone.java
  dp.RudeStone
-dp/Sensitivity.java
- dp.Sensitivity
-dp/Position.java
- dp.Position
-dp/Player.java
- dp.Player
- dp.Player$ControlSensitivity
 dp/World.java
  dp.World
  dp.World$Type
+dp/PoliteTree.java
+ dp.PoliteTree
+nonused/RudeWorld.java
+ nonused.RudeWorld
+dp/Sensitivity.java
+ dp.Sensitivity
+nonused/InteractableAccessory.java
+ nonused.InteractableAccessory
+dp/Display.java
+ dp.Display
+dp/Interactable.java
+ dp.Interactable
+dp/Stone.java
+ dp.Stone
+dp/Player.java
+ dp.Player
+ dp.Player$ControlSensitivity
+nonused/PoliteWorld.java
+ nonused.PoliteWorld
 dp/WorldType.java
  dp.WorldType
+dp/PoliteStone.java
+ dp.PoliteStone
+dp/Tree.java
+ dp.Tree
