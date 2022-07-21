@@ -2,6 +2,10 @@ import dp.*;
 import nonused.Accessory;
 import nonused.PoliteWorld;
 import nonused.RudeWorld;
+import observer.Observe;
+import observer.Observer;
+import observer.Polite;
+import observer.Rude;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -67,4 +71,51 @@ public class InteractableTest {
         world.stone_Harden();
         assertEquals(world.stone_GetSolidity(), 7);
     }
+
+    @ParameterizedTest
+    @EnumSource(World.Type.class)
+    public void TestHarder() {
+        Observe observer = new Observer();
+        observer.add("Polite",new Polite());
+        observer.add("Rude",new Rude());
+        assertEquals(observer.decideHardToShow("Polite"), 5);
+        observer.decideHarder("Polite");
+        assertEquals(observer.decideHardToShow("Polite"), 6);
+        observer.decideHarder("Polite");
+        assertEquals(observer.decideHardToShow("Polite"), 7);
+        observer.decideHarder("Polite");
+        assertEquals(observer.decideHardToShow("Polite"), 8);
+        assertEquals(observer.decideHardToShow("Rude"), 5);
+        observer.decideHarder("Rude");
+        assertEquals(observer.decideHardToShow("Rude"), 6);
+        observer.decideHarder("Rude");
+        assertEquals(observer.decideHardToShow("Rude"), 7);
+        observer.decideHarder("Rude");
+        assertEquals(observer.decideHardToShow("Rude"), 8);
+    }
+
+    @ParameterizedTest
+    @EnumSource(World.Type.class)
+    public void TestHigher() {
+        Observe observer = new Observer();
+        observer.add("Polite",new Polite());
+        observer.add("Rude",new Rude());
+        assertEquals(observer.decideHeightToShow("Polite"), 10);
+        observer.decideHigher("Polite");
+        assertEquals(observer.decideHeightToShow("Polite"), 11);
+        observer.decideHigher("Polite");
+        assertEquals(observer.decideHeightToShow("Polite"), 12);
+        observer.decideHigher("Polite");
+        assertEquals(observer.decideHeightToShow("Polite"), 13);
+
+        assertEquals(observer.decideHeightToShow("Rude"), 10);
+        observer.decideHigher("Rude");
+        assertEquals(observer.decideHeightToShow("Rude"), 11);
+        observer.decideHigher("Rude");
+        assertEquals(observer.decideHeightToShow("Rude"), 12);
+        observer.decideHigher("Rude");
+        assertEquals(observer.decideHeightToShow("Rude"), 13);
+    }
+
+
 }

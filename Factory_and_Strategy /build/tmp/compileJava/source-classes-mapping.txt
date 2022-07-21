@@ -34,3 +34,15 @@ dp/PoliteStone.java
  dp.PoliteStone
 dp/Tree.java
  dp.Tree
+observer/Listen.java
+ observer.Listen
+observer/Polite.java
+ observer.Polite
+observer/Replacement.java
+ observer.Replacement
+observer/Rude.java
+ observer.Rude
+observer/Observe.java
+ observer.Observe
+observer/Observer.java
+ observer.Observer

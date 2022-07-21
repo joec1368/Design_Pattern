@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="InteractableTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-07-21T05:18:56" hostname="chenyouqiaodeMacBook-Pro.local" time="0.286">
+<testsuite name="InteractableTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-07-21T12:28:41" hostname="chenyouqiaodeMacBook-Pro.local" time="0.249">
   <properties/>
-  <testcase name="[1] " classname="InteractableTest" time="0.282"/>
+  <testcase name="[1] " classname="InteractableTest" time="0.244"/>
   <testcase name="[2] " classname="InteractableTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
