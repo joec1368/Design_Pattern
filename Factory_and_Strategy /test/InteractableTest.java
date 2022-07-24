@@ -1,25 +1,29 @@
+import Sense.ControlSensibilityHigh;
+import Sense.ControlSensibilityLow;
 import dp.*;
-import nonused.Accessory;
-import nonused.PoliteWorld;
-import nonused.RudeWorld;
 import observer.Observe;
 import observer.Observer;
 import observer.Polite;
 import observer.Rude;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @ExtendWith(MockitoExtension.class)
 public class InteractableTest {
 
     @ParameterizedTest
-    @EnumSource(World.Type.class)
-    public void TestStoneHarden(World.Type type) {
-        World world = new World(type);
+    @MethodSource("worldType")
+    public void TestStoneHarden() {
+        World world = new PoliteWorld();
         assertEquals(world.getStone().getSolidity(), 5);
         world.getStone().harden();
         assertEquals(world.getStone().getSolidity(), 6);
@@ -28,9 +32,8 @@ public class InteractableTest {
     }
 
     @ParameterizedTest
-    @EnumSource(World.Type.class)
-    public void TestTreeGrow(World.Type type) {
-        World world = new World(type);
+    @MethodSource("worldType")
+    public void TestTreeGrow(World world) {
         assertEquals(world.getTree().getHeight(), 10);
         world.getTree().waterIt();
         assertEquals(world.getTree().getHeight(), 11);
@@ -39,41 +42,7 @@ public class InteractableTest {
     }
 
     @ParameterizedTest
-    @EnumSource(World.Type.class)
-    public void TestTreeGrow_Accessory() {
-        Accessory world = new PoliteWorld();
-        assertEquals(world.tree_GetHeight(), 10);
-        world.tree_WaterIt();
-        assertEquals(world.tree_GetHeight(), 11);
-        world.tree_WaterIt();
-        assertEquals(world.tree_GetHeight(), 12);
-        world = new RudeWorld();
-        assertEquals(world.tree_GetHeight(), 10);
-        world.tree_WaterIt();
-        assertEquals(world.tree_GetHeight(), 11);
-        world.tree_WaterIt();
-        assertEquals(world.tree_GetHeight(), 12);
-    }
-
-    @ParameterizedTest
-    @EnumSource(World.Type.class)
-    public void TestStoneHarden_Accessory() {
-        Accessory world = new PoliteWorld();
-        assertEquals(world.stone_GetSolidity(), 5);
-        world.stone_Harden();
-        assertEquals(world.stone_GetSolidity(), 6);
-        world.stone_Harden();
-        assertEquals(world.stone_GetSolidity(), 7);
-        world = new RudeWorld();
-        assertEquals(world.stone_GetSolidity(), 5);
-        world.stone_Harden();
-        assertEquals(world.stone_GetSolidity(), 6);
-        world.stone_Harden();
-        assertEquals(world.stone_GetSolidity(), 7);
-    }
-
-    @ParameterizedTest
-    @EnumSource(World.Type.class)
+    @MethodSource("worldType")
     public void TestHarder() {
         Observe observer = new Observer();
         observer.add("Polite",new Polite());
@@ -95,7 +64,7 @@ public class InteractableTest {
     }
 
     @ParameterizedTest
-    @EnumSource(World.Type.class)
+    @MethodSource("worldType")
     public void TestHigher() {
         Observe observer = new Observer();
         observer.add("Polite",new Polite());
@@ -117,5 +86,11 @@ public class InteractableTest {
         assertEquals(observer.decideHeightToShow("Rude"), 13);
     }
 
+    private static Stream<Arguments> worldType() {
+        return Stream.of(
+                arguments( new dp.PoliteWorld()),
+                arguments( new dp.RudeWorld())
+        );
+    }
 
 }

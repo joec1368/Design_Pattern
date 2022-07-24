@@ -1,4 +1,6 @@
 import dp.Display;
+import dp.PoliteWorld;
+import dp.RudeWorld;
 import dp.World;
 import observer.Observe;
 import observer.Observer;
@@ -19,7 +21,7 @@ public class WorldTest {
 
     @Test
     public void TestPoliteWorld() {
-        World world = new World(World.Type.Polite);
+        World world = new PoliteWorld();
         world.getTree().interact(display);
         world.getStone().interact(display);
         InOrder order = inOrder(display);
@@ -29,7 +31,7 @@ public class WorldTest {
 
     @Test
     public void TestRudeWorld() {
-        World world = new World(World.Type.Rude);
+        World world = new RudeWorld();
         world.getTree().interact(display);
         world.getStone().interact(display);
         InOrder order = inOrder(display);

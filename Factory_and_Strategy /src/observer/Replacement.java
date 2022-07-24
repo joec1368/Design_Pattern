@@ -1,7 +1,5 @@
 package observer;
 
-import dp.Display;
-
 public abstract class Replacement implements Listen{
 
     int height = 10;
@@ -25,14 +23,4 @@ public abstract class Replacement implements Listen{
     public int showHard(){
         return hard;
     }
-    @Override
-    public void talkTree(Display display){
-
-    }
-
-    @Override
-    public void talkRock(Display display){
-
-    }
-
 }

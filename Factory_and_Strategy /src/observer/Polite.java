@@ -7,6 +7,7 @@ public class Polite extends Replacement implements Listen {
     public void talkRock(Display display){
         display.display("Good morning...");
     }
+
     @Override
     public void talkTree(Display display){
         display.display("Hi, nice you meet you!");

@@ -1,17 +1,16 @@
 package dp;
 
+import Sense.ControlSensibility;
+
 public class Player {
     private World currentWorld;
     //private ControlSensitivity sensitivity;
-    private Sensitivity sensitivity;
+    private ControlSensibility sensitivity;
     private Position currentPosition = new Position(0, 0);
-    public enum ControlSensitivity {
-        LOW, MEDIUM, HIGH , VERYHIGH
-    }
 
-    public Player(World initialWorld, ControlSensitivity sensitivity) {
+    public Player(World initialWorld, ControlSensibility sensitivity) {
         currentWorld = initialWorld;
-        this.sensitivity = new Sensitivity(sensitivity);
+        this.sensitivity = sensitivity;
     }
 
     public void enter(World world) {
@@ -19,16 +18,16 @@ public class Player {
         currentPosition = new Position(0, 0);
     }
 
-    public void changeSensitivity(ControlSensitivity sensitivity) {
-        this.sensitivity = new Sensitivity(sensitivity);
+    public void changeSensitivity(ControlSensibility sensitivity) {
+        this.sensitivity = sensitivity;
     }
 
     public void moveForward() {
-        currentPosition = currentPosition.forward(this.sensitivity.showWeight());
+        currentPosition = currentPosition.forward(this.sensitivity.unitValue());
     }
 
     public void moveRight() {
-        currentPosition = currentPosition.right(this.sensitivity.showWeight());
+        currentPosition = currentPosition.right(this.sensitivity.unitValue());
     }
 
     public Position getCurrentPosition() {

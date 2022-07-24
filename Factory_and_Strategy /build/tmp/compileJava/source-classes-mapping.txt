@@ -1,48 +1,48 @@
-nonused/Accessory.java
- nonused.Accessory
+observer/Listen.java
+ observer.Listen
+observer/Rude.java
+ observer.Rude
 dp/Position.java
  dp.Position
-dp/RudeTree.java
- dp.RudeTree
+dp/RudeWorld.java
+ dp.RudeWorld
 dp/RudeStone.java
  dp.RudeStone
 dp/World.java
  dp.World
- dp.World$Type
+Sense/ControlSensibilityMedium.java
+ Sense.ControlSensibilityMedium
 dp/PoliteTree.java
  dp.PoliteTree
-nonused/RudeWorld.java
- nonused.RudeWorld
-dp/Sensitivity.java
- dp.Sensitivity
-nonused/InteractableAccessory.java
- nonused.InteractableAccessory
-dp/Display.java
- dp.Display
+Sense/ControlSensibilityHigh.java
+ Sense.ControlSensibilityHigh
+Sense/ControlSensibilityVeryHigh.java
+ Sense.ControlSensibilityVeryHigh
+observer/Observer.java
+ observer.Observer
+dp/PoliteWorld.java
+ dp.PoliteWorld
 dp/Interactable.java
  dp.Interactable
 dp/Stone.java
  dp.Stone
 dp/Player.java
  dp.Player
- dp.Player$ControlSensitivity
-nonused/PoliteWorld.java
- nonused.PoliteWorld
-dp/WorldType.java
- dp.WorldType
+observer/Observe.java
+ observer.Observe
+dp/Display.java
+ dp.Display
+Sense/ControlSensibility.java
+ Sense.ControlSensibility
+observer/Polite.java
+ observer.Polite
 dp/PoliteStone.java
  dp.PoliteStone
 dp/Tree.java
  dp.Tree
-observer/Listen.java
- observer.Listen
-observer/Polite.java
- observer.Polite
 observer/Replacement.java
  observer.Replacement
-observer/Rude.java
- observer.Rude
-observer/Observe.java
- observer.Observe
-observer/Observer.java
- observer.Observer
+dp/RudeTree.java
+ dp.RudeTree
+Sense/ControlSensibilityLow.java
+ Sense.ControlSensibilityLow

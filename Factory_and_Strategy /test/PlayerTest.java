@@ -1,10 +1,12 @@
+import Sense.ControlSensibility;
+import Sense.ControlSensibilityHigh;
+import Sense.ControlSensibilityLow;
 import dp.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -36,18 +38,18 @@ public class PlayerTest {
     }
 
     @ParameterizedTest
-    @EnumSource(Player.ControlSensitivity.class)
-    public void TestInteractWithTree(Player.ControlSensitivity sensitivity) {
-        Player player = new Player(world, sensitivity);
+    @MethodSource("wordSensitivity")
+    public void TestInteractWithTree(ControlSensibility sensibility) {
+        Player player = new Player(world, sensibility);
         player.interactWithTree(display);
         verify(world).getTree();
         verify(tree).interact(display);
     }
 
     @ParameterizedTest
-    @EnumSource(Player.ControlSensitivity.class)
-    public void TestInteractWithStone(Player.ControlSensitivity sensitivity) {
-        Player player = new Player(world, sensitivity);
+    @MethodSource("wordSensitivity")
+    public void TestInteractWithStone(ControlSensibility sensibility) {
+        Player player = new Player(world, sensibility);
         player.interactWithStone(display);
         verify(world).getStone();
         verify(stone).interact(display);
@@ -55,14 +57,15 @@ public class PlayerTest {
 
     @ParameterizedTest
     @MethodSource("wordTypeAndSensitivity")
-    public void TestPlayerStartAtOrigin(World.Type worldType, Player.ControlSensitivity sensitivity) {
-        Player player = new Player(new World(worldType), sensitivity);
+    public void TestPlayerStartAtOrigin(World world, ControlSensibility sensitivity) {
+        Player player = new Player(world, new ControlSensibilityLow());
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
     }
 
-    @Test
-    public void TestPlayerSensitivityLOW() {
-        Player player = new Player(world, Player.ControlSensitivity.LOW);
+    @ParameterizedTest
+    @MethodSource("worldType")
+    public void TestPlayerSensitivityLOW(World world) {
+        Player player = new Player(world, new ControlSensibilityLow());
         player.moveForward();
         assertEquals(player.getCurrentPosition(), new Position(0, 5));
         player.moveRight();
@@ -71,7 +74,7 @@ public class PlayerTest {
 
     @Test
     public void TestPlayerSensitivityHIGH() {
-        Player player = new Player(world, Player.ControlSensitivity.HIGH);
+        Player player = new Player(world, new ControlSensibilityHigh());
         player.moveForward();
         assertEquals(player.getCurrentPosition(), new Position(0, 50));
         player.moveRight();
@@ -79,33 +82,48 @@ public class PlayerTest {
     }
 
     @ParameterizedTest
-    @MethodSource("wordTypeAndSensitivity")
-    public void TestPlayerChangeWorld(World.Type worldType, Player.ControlSensitivity sensitivity) {
-        Player player = new Player(new World(worldType), sensitivity);
+    @MethodSource("worldType")
+    public void TestPlayerChangeWorld(World world) {
+        Player player = new Player(world,new ControlSensibilityLow());
         player.moveRight();
-        player.enter(world);
+        player.enter(this.world);
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
         player.interactWithStone(display);
-        verify(world).getStone();
+        verify(this.world).getStone();
     }
 
     private static Stream<Arguments> wordTypeAndSensitivity() {
         return Stream.of(
-                arguments(World.Type.Rude, Player.ControlSensitivity.LOW),
-                arguments(World.Type.Rude, Player.ControlSensitivity.HIGH),
-                arguments(World.Type.Polite, Player.ControlSensitivity.LOW),
-                arguments(World.Type.Polite, Player.ControlSensitivity.HIGH)
+                arguments(new RudeWorld(), new ControlSensibilityLow()),
+                arguments(new RudeWorld(), new ControlSensibilityHigh()),
+                arguments(new PoliteWorld(), new ControlSensibilityLow()),
+                arguments(new PoliteWorld(), new ControlSensibilityHigh())
+        );
+    }
+    private static Stream<Arguments> wordSensitivity() {
+        return Stream.of(
+                arguments( new ControlSensibilityLow()),
+                arguments( new ControlSensibilityHigh()),
+                arguments( new ControlSensibilityLow()),
+                arguments( new ControlSensibilityHigh())
         );
     }
 
     @ParameterizedTest
-    @EnumSource(World.Type.class)
-    public void TestPlayerChangeSensitivity(World.Type type) {
-        Player player = new Player(new World(type), Player.ControlSensitivity.LOW);
+    @MethodSource("worldType")
+    public void TestPlayerChangeSensitivity(World world) {
+        Player player = new Player(world, new ControlSensibilityLow());
         player.moveForward();
         assertEquals(player.getCurrentPosition(), new Position(0, 5));
-        player.changeSensitivity(Player.ControlSensitivity.HIGH);
+        player.changeSensitivity(new ControlSensibilityHigh());
         player.moveRight();
         assertEquals(player.getCurrentPosition(), new Position(50, 5));
+    }
+
+    private static Stream<Arguments> worldType() {
+        return Stream.of(
+                arguments( new PoliteWorld()),
+                arguments( new RudeWorld())
+        );
     }
 }

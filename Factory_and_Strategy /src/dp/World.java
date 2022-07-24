@@ -1,20 +1,22 @@
 package dp;
 
-public class World {
-    WorldType worldType;
-    public enum Type {
-        Polite, Rude
-    }
+public abstract class World {
+    Tree tree;
+    Stone stone;
 
-    public World(Type type) {
-       this.worldType = new WorldType(type);
+    protected abstract Tree createTree();
+    protected abstract Stone createStone();
+
+    public World() {
+        this.tree = createTree();
+        this.stone = createStone();
     }
 
     public Tree getTree() {
-        return this.worldType.showTree();
+        return tree;
     }
 
     public Stone getStone() {
-        return this.worldType.showStone();
+        return stone;
     }
 }
