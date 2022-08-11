@@ -128,7 +128,7 @@ public class StdoutDisplayTest {
         gui.addSign(new SignHeader1());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n# ***~~random content~~***\n", newOut.toString());
+        assertEquals("talker: talkerA\n# ~~***random content***~~\n", newOut.toString());
     }
 
     @Test

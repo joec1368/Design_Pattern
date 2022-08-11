@@ -142,7 +142,7 @@ public class GUIDisplayTest {
         gui.displayTalker();
         gui.displayMessage();
         verify(screen).showTalker("talkerA");
-        verify(screen).show("# ***~~random content~~***");
+        verify(screen).show("# ~~***random content***~~");
     }
 
     @Test
