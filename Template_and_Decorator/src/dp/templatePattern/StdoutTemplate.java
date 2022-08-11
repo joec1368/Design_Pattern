@@ -14,6 +14,6 @@ public class StdoutTemplate extends Template{
 
     @Override
     public void displayMessage() {
-        System.out.println(header + message);
+        System.out.println(header + preSign + message + posSign);
     }
 }

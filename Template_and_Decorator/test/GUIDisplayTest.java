@@ -152,10 +152,11 @@ public class GUIDisplayTest {
         gui.addSign(new SignStrikeOut());
         gui.addSign(new SignBold());
         gui.addSign(new SignItalic());
+        gui.addSign(new SignHeader3());
         gui.displayTalker();
         gui.displayMessage();
         verify(screen).showTalker("talkerA");
-        verify(screen).show("## ***~~random content~~***");
+        verify(screen).show("### ~~***random content***~~");
     }
 
 }
