@@ -1,14 +1,14 @@
 package dp.templatePattern;
 
-public class TemplateItalic implements Sign{
+public class SignStrikeOut implements Sign{
 
     @Override
     public String preSign() {
-        return "*";
+        return "~~";
     }
 
     @Override
     public String posSign() {
-        return "*";
+        return "~~";
     }
 }

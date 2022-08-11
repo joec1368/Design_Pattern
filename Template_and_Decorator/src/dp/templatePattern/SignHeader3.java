@@ -1,14 +1,14 @@
 package dp.templatePattern;
 
-public class TemplateBold implements Sign{
+public class SignHeader3 implements Sign{
 
     @Override
     public String preSign() {
-        return "**";
+        return "### ";
     }
 
     @Override
     public String posSign() {
-        return "**";
+        return "";
     }
 }

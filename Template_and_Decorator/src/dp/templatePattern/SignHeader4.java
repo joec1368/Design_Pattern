@@ -1,10 +1,10 @@
 package dp.templatePattern;
 
-public class TemplateHeader6 implements Sign{
+public class SignHeader4 implements Sign{
 
     @Override
     public String preSign() {
-        return "###### ";
+        return "#### ";
     }
 
     @Override
