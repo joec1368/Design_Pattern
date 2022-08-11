@@ -63,7 +63,7 @@ public class StdoutDisplayTest {
         gui.addSign(new TemplateHeader1());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n#random content\n", newOut.toString());
+        assertEquals("talker: talkerA\n# random content\n", newOut.toString());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class StdoutDisplayTest {
         gui.addSign(new TemplateHeader2());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n##random content\n", newOut.toString());
+        assertEquals("talker: talkerA\n## random content\n", newOut.toString());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class StdoutDisplayTest {
         gui.addSign(new TemplateHeader3());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n###random content\n", newOut.toString());
+        assertEquals("talker: talkerA\n### random content\n", newOut.toString());
     }
 
     @Test
@@ -90,7 +90,7 @@ public class StdoutDisplayTest {
         gui.addSign(new TemplateHeader4());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n####random content\n", newOut.toString());
+        assertEquals("talker: talkerA\n#### random content\n", newOut.toString());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class StdoutDisplayTest {
         gui.addSign(new TemplateHeader5());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n#####random content\n", newOut.toString());
+        assertEquals("talker: talkerA\n##### random content\n", newOut.toString());
     }
 
     @Test
@@ -108,7 +108,7 @@ public class StdoutDisplayTest {
         gui.addSign(new TemplateHeader6());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n######random content\n", newOut.toString());
+        assertEquals("talker: talkerA\n###### random content\n", newOut.toString());
     }
 
     @Test
@@ -129,7 +129,7 @@ public class StdoutDisplayTest {
         gui.addSign(new TemplateHeader1());
         gui.displayTalker();
         gui.displayMessage();
-        assertEquals("talker: talkerA\n#***~~random content~~***\n", newOut.toString());
+        assertEquals("talker: talkerA\n# ***~~random content~~***\n", newOut.toString());
     }
 
     @AfterEach

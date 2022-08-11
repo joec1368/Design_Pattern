@@ -4,7 +4,7 @@ public class TemplateHeader6 implements Sign{
 
     @Override
     public String preSign() {
-        return "######";
+        return "###### ";
     }
 
     @Override
