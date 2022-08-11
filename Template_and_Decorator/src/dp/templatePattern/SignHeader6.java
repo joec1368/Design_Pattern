@@ -4,11 +4,16 @@ public class SignHeader6 implements Sign{
 
     @Override
     public String preSign() {
-        return "###### ";
+        return "";
     }
 
     @Override
     public String posSign() {
         return "";
+    }
+
+    @Override
+    public String headerSign() {
+        return "###### ";
     }
 }

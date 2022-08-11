@@ -5,4 +5,6 @@ public interface Sign {
 
     String posSign();
 
+    String headerSign();
+
 }

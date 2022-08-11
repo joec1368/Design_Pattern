@@ -11,4 +11,9 @@ public class SignItalic implements Sign{
     public String posSign() {
         return "*";
     }
+
+    @Override
+    public String headerSign() {
+        return "";
+    }
 }

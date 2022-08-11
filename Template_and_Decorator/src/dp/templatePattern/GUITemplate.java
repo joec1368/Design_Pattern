@@ -14,6 +14,6 @@ public class GUITemplate extends Template{
 
     @Override
     public void displayMessage() {
-        GUI.screen.show(message);
+        GUI.screen.show(header + message);
     }
 }

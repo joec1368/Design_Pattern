@@ -131,6 +131,18 @@ public class StdoutDisplayTest {
         assertEquals("talker: talkerA\n# ***~~random content~~***\n", newOut.toString());
     }
 
+    @Test
+    public void TestRemixContent() {
+        Template gui = new StdoutTemplate("talkerA", "random content");
+        gui.addSign(new SignHeader3());
+        gui.addSign(new SignStrikeOut());
+        gui.addSign(new SignBold());
+        gui.addSign(new SignItalic());
+        gui.displayTalker();
+        gui.displayMessage();
+        assertEquals("talker: talkerA\n### ***~~random content~~***\n", newOut.toString());
+    }
+
     @AfterEach
     public void teardown() {
         System.setOut(oldOut);

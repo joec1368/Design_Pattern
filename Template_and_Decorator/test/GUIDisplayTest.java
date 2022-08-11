@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -142,6 +143,19 @@ public class GUIDisplayTest {
         gui.displayMessage();
         verify(screen).showTalker("talkerA");
         verify(screen).show("# ***~~random content~~***");
+    }
+
+    @Test
+    public void TestRemixContent() {
+        Template gui = new GUITemplate("talkerA", "random content");
+        gui.addSign(new SignHeader2());
+        gui.addSign(new SignStrikeOut());
+        gui.addSign(new SignBold());
+        gui.addSign(new SignItalic());
+        gui.displayTalker();
+        gui.displayMessage();
+        verify(screen).showTalker("talkerA");
+        verify(screen).show("## ***~~random content~~***");
     }
 
 }
