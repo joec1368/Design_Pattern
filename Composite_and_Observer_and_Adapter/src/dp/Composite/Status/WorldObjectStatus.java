@@ -1,4 +1,4 @@
-package dp.Composite;
+package dp.Composite.Status;
 
 import dp.Player;
 

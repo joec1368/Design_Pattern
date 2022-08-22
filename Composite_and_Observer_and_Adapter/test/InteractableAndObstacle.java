@@ -1,6 +1,9 @@
 import dp.*;
 import dp.Composite.*;
 import dp.Composite.ObjectComposite;
+import dp.Composite.Status.ObstacleStatus;
+import dp.Composite.Status.Stone_Composite;
+import dp.Composite.Status.Tree_Composite;
 import dp.sensitivity.ControlSensitivityHigh;
 import dp.world.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,9 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT) //we have to use this to stub in @BeforeEach
 public class InteractableAndObstacle {
-    @Mock
-    World world;
-
     private PrintStream oldOut;
     private ByteArrayOutputStream newOut;
     private Component wholeWorld;
@@ -43,12 +43,10 @@ public class InteractableAndObstacle {
         //setting strange world objects
         strangeWorld.addObject(new ObjectComposite(0,20,"stone"));
         ObjectComposite strangeWorldObject = strangeWorld.getObject("stone");
-        strangeWorldObject.setSentence("stone","stoneeeee");
 
         //setting normal world objects
         normalWorld.addObject(new ObjectComposite(0,-20,"tree"));
         ObjectComposite normalWorldObject = normalWorld.getObject("tree");
-        normalWorldObject.setSentence("tree","treeeee");
     }
 
 
@@ -56,7 +54,7 @@ public class InteractableAndObstacle {
     public void InteractalbeObject() {
         Player player = new Player(strangeWorld, new ControlSensitivityHigh());
         ObjectComposite strangeWorldObject = strangeWorld.getObject("stone");
-        strangeWorldObject.addStatus(new InteractableStatus(strangeWorldObject));
+        strangeWorldObject.addStatus(new Stone_Composite());
         player.moveForward();
         assertEquals("stone:stoneeeee\n", newOut.toString());
         assertEquals(player.getCurrentPosition(), new Position(0, 20));
@@ -66,7 +64,7 @@ public class InteractableAndObstacle {
         player.enter(normalWorld);
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
         ObjectComposite normalWorldObject = normalWorld.getObject("tree");
-        normalWorldObject.addStatus(new InteractableStatus(normalWorldObject));
+        normalWorldObject.addStatus(new Tree_Composite());
         player.moveForward();
         player.moveBackward();
         player.moveBackward();
@@ -79,8 +77,8 @@ public class InteractableAndObstacle {
     public void ObstacleAndInteractableObject() {
         Player player = new Player(strangeWorld, new ControlSensitivityHigh());
         ObjectComposite strangeWorldObject = strangeWorld.getObject("stone");
-        strangeWorldObject.addStatus(new InteractableStatus(strangeWorldObject));
-        strangeWorldObject.addStatus(new ObstacleStatus(strangeWorldObject));
+        strangeWorldObject.addStatus(new Stone_Composite());
+        strangeWorldObject.addStatus(new ObstacleStatus());
         player.moveForward();
         assertEquals("stone:stoneeeee\n", newOut.toString());
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
@@ -90,8 +88,8 @@ public class InteractableAndObstacle {
         player.enter(normalWorld);
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
         ObjectComposite normalWorldObject = normalWorld.getObject("tree");
-        normalWorldObject.addStatus(new InteractableStatus(normalWorldObject));
-        normalWorldObject.addStatus(new ObstacleStatus(normalWorldObject));
+        normalWorldObject.addStatus(new Tree_Composite());
+        normalWorldObject.addStatus(new ObstacleStatus());
         player.moveForward();
         player.moveBackward();
         player.moveBackward();
@@ -104,7 +102,7 @@ public class InteractableAndObstacle {
     public void ObstacleObject() {
         Player player = new Player(strangeWorld, new ControlSensitivityHigh());
         ObjectComposite strangeWorldObject = strangeWorld.getObject("stone");
-        strangeWorldObject.addStatus(new ObstacleStatus(strangeWorldObject));
+        strangeWorldObject.addStatus(new ObstacleStatus());
         player.moveForward();
         assertEquals("", newOut.toString());
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
@@ -114,7 +112,7 @@ public class InteractableAndObstacle {
         player.enter(normalWorld);
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
         ObjectComposite normalWorldObject = normalWorld.getObject("tree");
-        normalWorldObject.addStatus(new ObstacleStatus(normalWorldObject));
+        normalWorldObject.addStatus(new ObstacleStatus());
         player.moveForward();
         player.moveBackward();
         player.moveBackward();
@@ -127,8 +125,8 @@ public class InteractableAndObstacle {
     public void DontWalkHereObject() {
         Player player = new Player(strangeWorld, new ControlSensitivityHigh());
         ObjectComposite strangeWorldObject = strangeWorld.getObject("stone");
-        strangeWorldObject.addStatus(new InteractableStatus(strangeWorldObject));
-        strangeWorldObject.addStatus(new ObstacleStatus(strangeWorldObject));
+        strangeWorldObject.addStatus(new Stone_Composite());
+        strangeWorldObject.addStatus(new ObstacleStatus());
         player.moveRight();
         assertEquals("", newOut.toString());
         assertEquals(player.getCurrentPosition(), new Position(20, 0));
@@ -138,8 +136,8 @@ public class InteractableAndObstacle {
         player.enter(normalWorld);
         assertEquals(player.getCurrentPosition(), new Position(0, 0));
         ObjectComposite normalWorldObject = normalWorld.getObject("tree");
-        normalWorldObject.addStatus(new InteractableStatus(normalWorldObject));
-        normalWorldObject.addStatus(new ObstacleStatus(normalWorldObject));
+        normalWorldObject.addStatus(new Stone_Composite());
+        normalWorldObject.addStatus(new ObstacleStatus());
         player.moveForward();
         assertEquals("", newOut.toString());
         assertEquals(player.getCurrentPosition(), new Position(0, 20));

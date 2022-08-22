@@ -1,5 +1,6 @@
 package dp.Composite;
 
+import dp.Composite.Status.WorldObjectStatus;
 import dp.Player;
 
 public abstract class Component {

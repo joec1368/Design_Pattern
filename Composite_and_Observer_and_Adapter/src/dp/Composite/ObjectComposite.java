@@ -1,5 +1,6 @@
 package dp.Composite;
 
+import dp.Composite.Status.WorldObjectStatus;
 import dp.Player;
 import dp.Position;
 
@@ -10,9 +11,7 @@ public class ObjectComposite extends Component{
 
     private List<WorldObjectStatus> list = new ArrayList<>();;
 
-    Position position = new Position(0, 0);
-    String talker = null;
-    String message = null;
+    Position position;
     String objectName;
 
     public ObjectComposite(int x , int y, String objectName){
@@ -20,25 +19,8 @@ public class ObjectComposite extends Component{
         this.objectName = objectName;
     }
 
-    public void setTalker(String talker) {
-        this.talker = talker;
-    }
-
-    public void setMessage(String message){
-        this.message = message;
-    }
-
-    public void setSentence(String talker, String message){
-        setMessage(message);
-        setTalker(talker);
-    }
-
-    public String showTalker(){
-        return message;
-    }
-
-    public void talk(){
-        System.out.println(talker + ":" + message);
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     @Override
