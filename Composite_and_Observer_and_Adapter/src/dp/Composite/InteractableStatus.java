@@ -3,13 +3,13 @@ package dp.Composite;
 import dp.Player;
 
 public class InteractableStatus implements WorldObjectStatus{
-    Object object;
+    ObjectComposite objectComposite;
 
-    public InteractableStatus(Object object){
-        this.object = object;
+    public InteractableStatus(ObjectComposite objectComposite){
+        this.objectComposite = objectComposite;
     }
     public void  interact(){
-        object.talk();
+        objectComposite.talk();
     }
 
     @Override

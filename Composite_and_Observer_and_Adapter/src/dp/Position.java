@@ -13,6 +13,12 @@ public class Position {
         return new Position(x, y+dy);
     }
 
+    public Position backward(int dy) {
+        return new Position(x, y-dy);
+    }
+
+    public Position left(int dx) {return new Position(x-dx,y);}
+
     public Position right(int dx) {
         return new Position(x+dx, y);
     }

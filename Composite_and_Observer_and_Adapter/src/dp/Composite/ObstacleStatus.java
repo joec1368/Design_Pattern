@@ -4,8 +4,8 @@ import dp.Player;
 
 public class ObstacleStatus extends InteractableStatus{
 
-    public ObstacleStatus(Object object) {
-        super(object);
+    public ObstacleStatus(ObjectComposite objectComposite) {
+        super(objectComposite);
     }
 
     @Override

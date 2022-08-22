@@ -27,23 +27,23 @@ public class WorldComposite extends Component{
     }
 
     @Override
-    public Component getWorld(String worldName) {
+    public WorldComposite getWorld(String worldName) {
         for(Component world : list){
             if(world.worldName.equals(worldName)){
-                return world;
+                return (WorldComposite)world;
             }else{
                 Component hopingWorld = world.getWorld(worldName);
-                if(hopingWorld != null) return hopingWorld;
+                if(hopingWorld != null) return (WorldComposite)hopingWorld;
             }
         }
         return null;
     }
 
     @Override
-    public Component getObject(Position position){
+    public ObjectComposite getObject(String objectName){
         for(Component object : list){
-            if(object.getObject(position) != null){
-                return object;
+            if(object.getObject(objectName) != null){
+                return (ObjectComposite)object;
             }
         }
         return null;

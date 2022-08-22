@@ -1,9 +1,6 @@
 package dp.Composite;
 
 import dp.Player;
-import dp.Position;
-
-import java.util.List;
 
 public abstract class Component {
 
@@ -11,7 +8,7 @@ public abstract class Component {
 
     public void addObject(Component leaf){}
 
-    public void addStatue(WorldObjectStatus worldObjectStatus){}
+    public void addStatus(WorldObjectStatus worldObjectStatus){}
 
     public void notifyComponent(Player player){}
 
@@ -19,11 +16,11 @@ public abstract class Component {
 
     public void checkComponent(Player player){};
 
-    public Component getWorld(String worldName){
+    public WorldComposite getWorld(String worldName){
         return null;
     }
 
-    public Component getObject(Position position){
+    public ObjectComposite getObject(String objectName){
         return null;
     }
 
