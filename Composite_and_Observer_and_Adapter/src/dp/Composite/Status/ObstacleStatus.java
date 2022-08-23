@@ -1,6 +1,5 @@
-package dp.Composite.Status;
+package dp.composite.status;
 
-import dp.Composite.Status.InteractableStatus;
 import dp.Player;
 
 public class ObstacleStatus extends InteractableStatus {

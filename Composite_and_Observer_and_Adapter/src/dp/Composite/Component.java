@@ -1,15 +1,19 @@
-package dp.Composite;
+package dp.composite;
 
-import dp.Composite.Status.WorldObjectStatus;
+import dp.composite.status.WorldObjectStatus;
 import dp.Player;
 
 public abstract class Component {
 
     public String worldName = "null";
 
-    public void addObject(Component leaf){}
+    public Component addObject(Component leaf){
+        return null;
+    }
 
-    public void addStatus(WorldObjectStatus worldObjectStatus){}
+    public WorldObjectStatus addStatus(WorldObjectStatus worldObjectStatus){
+        return null;
+    }
 
     public void notifyComponent(Player player){}
 

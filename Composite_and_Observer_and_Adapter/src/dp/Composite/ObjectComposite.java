@@ -1,6 +1,6 @@
-package dp.Composite;
+package dp.composite;
 
-import dp.Composite.Status.WorldObjectStatus;
+import dp.composite.status.WorldObjectStatus;
 import dp.Player;
 import dp.Position;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ObjectComposite extends Component{
 
-    private List<WorldObjectStatus> list = new ArrayList<>();;
+    private List<WorldObjectStatus> list = new ArrayList<>();
 
     Position position;
     String objectName;
@@ -42,7 +42,8 @@ public class ObjectComposite extends Component{
     }
 
     @Override
-    public void addStatus(WorldObjectStatus worldObjectStatus){
+    public WorldObjectStatus addStatus(WorldObjectStatus worldObjectStatus){
         list.add(worldObjectStatus);
+        return worldObjectStatus;
     }
 }

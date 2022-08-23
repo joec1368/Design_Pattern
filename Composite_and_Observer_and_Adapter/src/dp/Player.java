@@ -1,10 +1,7 @@
 package dp;
 
-import dp.Composite.WorldComposite;
-import dp.display.Display;
-import dp.interactable.Intractable;
+import dp.composite.WorldComposite;
 import dp.sensitivity.ControlSensitivity;
-import dp.world.World;
 
 public class Player {
     private WorldComposite currentWorld;

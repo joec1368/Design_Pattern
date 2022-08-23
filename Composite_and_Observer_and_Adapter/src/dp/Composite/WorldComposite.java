@@ -1,7 +1,6 @@
-package dp.Composite;
+package dp.composite;
 
 import dp.Player;
-import dp.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +14,9 @@ public class WorldComposite extends Component{
     }
 
     @Override
-    public void addObject(Component leaf) {
+    public Component addObject(Component leaf) {
         list.add(leaf);
+        return leaf;
     }
 
     @Override
