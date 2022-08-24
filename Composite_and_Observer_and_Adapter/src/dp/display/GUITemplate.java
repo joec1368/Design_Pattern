@@ -1,4 +1,4 @@
-package dp.templatePattern;
+package dp.display;
 
 import dp.gui.GUI;
 
@@ -14,6 +14,7 @@ public class GUITemplate extends Template{
 
     @Override
     public void displayMessage() {
-        GUI.screen.show(header + preSign + message + posSign);
+        GUI.screen.show(header + message);
     }
+
 }

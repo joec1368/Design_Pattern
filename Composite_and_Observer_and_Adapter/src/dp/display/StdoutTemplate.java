@@ -1,6 +1,4 @@
-package dp.templatePattern;
-
-import dp.gui.GUI;
+package dp.display;
 
 public class StdoutTemplate extends Template{
     public StdoutTemplate(String talker, String message) {
@@ -14,6 +12,6 @@ public class StdoutTemplate extends Template{
 
     @Override
     public void displayMessage() {
-        System.out.println(header + preSign + message + posSign);
+        System.out.println(header + message);
     }
 }

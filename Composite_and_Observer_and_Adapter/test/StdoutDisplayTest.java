@@ -1,4 +1,7 @@
-import dp.templatePattern.*;
+import dp.display.*;
+import dp.punctuationMarks.SignBold;
+import dp.punctuationMarks.SignItalic;
+import dp.punctuationMarks.SignStrikeOut;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,131 +33,12 @@ public class StdoutDisplayTest {
 
     @Test
     public void TestBoldContent() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignBold());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n**random content**\n", newOut.toString());
-    }
-
-    @Test
-    public void TestItalicContent() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignItalic());
-        gui.displayTalker();
-        gui.displayMessage();
-         assertEquals("talker: talkerA\n*random content*\n", newOut.toString());
-    }
-
-    @Test
-    public void TestBoldAndItalicContent() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignItalic());
-        gui.addSign(new SignBold());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n***random content***\n", newOut.toString());
-    }
-
-    @Test
-    public void TestHeader1Content() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader1());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n# random content\n", newOut.toString());
-    }
-
-    @Test
-    public void TestHeader2Content() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader2());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n## random content\n", newOut.toString());
-    }
-
-    @Test
-    public void TestHeader3Content() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader3());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n### random content\n", newOut.toString());
-    }
-
-    @Test
-    public void TestHeader4Content() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader4());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n#### random content\n", newOut.toString());
-    }
-
-    @Test
-    public void TestHeader5Content() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader5());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n##### random content\n", newOut.toString());
-    }
-
-    @Test
-    public void TestHeader6Content() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader6());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n###### random content\n", newOut.toString());
-    }
-
-    @Test
-    public void TestStrikeOutContent() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignStrikeOut());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n~~random content~~\n", newOut.toString());
-    }
-
-    @Test
-    public void TestMIXContent() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignStrikeOut());
-        gui.addSign(new SignBold());
-        gui.addSign(new SignItalic());
-        gui.addSign(new SignHeader1());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n# ~~***random content***~~\n", newOut.toString());
-    }
-
-    @Test
-    public void TestRemixContent() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader3());
-        gui.addSign(new SignStrikeOut());
-        gui.addSign(new SignBold());
-        gui.addSign(new SignItalic());
-        gui.addSign(new SignHeader5());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n##### ~~***random content***~~\n", newOut.toString());
-    }
-
-    @Test
-    public void TestRemix2Content() {
-        Template gui = new StdoutTemplate("talkerA", "random content");
-        gui.addSign(new SignHeader3());
-        gui.addSign(new SignBold());
-        gui.addSign(new SignStrikeOut());
-        gui.addSign(new SignItalic());
-        gui.addSign(new SignHeader5());
-        gui.displayTalker();
-        gui.displayMessage();
-        assertEquals("talker: talkerA\n##### **~~*random content*~~**\n", newOut.toString());
+        Template gui = new StdoutTemplate("talkerA", "random");
+        gui.addSign(new SignBold(),"nd");
+        gui.addSign(new SignItalic(),"an");
+        gui.addSign(new SignStrikeOut(),"do");
+        gui.displayStatement();
+        assertEquals("talker: talkerA\nr*a**n*~~d**o~~m\n", newOut.toString());
     }
 
     @AfterEach
